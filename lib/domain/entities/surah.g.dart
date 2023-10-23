@@ -17,8 +17,9 @@ _$SurahImpl _$$SurahImplFromJson(Map<String, dynamic> json) => _$SurahImpl(
       audio: json['audio'] as String,
       status: json['status'] as bool? ?? false,
       ayat: (json['ayat'] as List<dynamic>?)
-          ?.map((e) => Ayat.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => Ayat.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$SurahImplToJson(_$SurahImpl instance) =>

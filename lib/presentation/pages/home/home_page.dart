@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:quran/presentation/providers/audio_data/audio_data_provider.dart
 import 'package:quran/presentation/providers/router/router_provider.dart';
 import 'package:quran/presentation/providers/surah_data/all_surah_data_provider.dart';
 import 'package:quran/presentation/providers/surah_data/surah_data_provider.dart';
+import 'package:quran/presentation/services/shared_preferences.dart';
 import 'package:quran/presentation/widgets/bottom_nav_bar.dart';
 import 'package:quran/presentation/widgets/bottom_nav_bar_item.dart';
 import 'package:quran/presentation/widgets/surah_widget.dart';
@@ -158,7 +160,7 @@ class _HomePage extends ConsumerState<HomePage>
                                     ),
                                     horizontalSpace(8),
                                     const Text(
-                                      'Last Read',
+                                      'Last Playing',
                                       style: TextStyle(
                                         color: white,
                                         fontSize: 14,
@@ -323,7 +325,11 @@ class _HomePage extends ConsumerState<HomePage>
                     isSelected: selectedPage == 4,
                     image: 'assets/images/bookmark-icon.svg'),
               ],
-              onTap: (index) {
+              onTap: (index) async {
+                String data = await DefaultAssetBundle.of(context)
+                    .loadString("assets/doa/doaharian.json");
+                final jsonResult = jsonDecode(data);
+                print(jsonResult);
                 // _controller.animateTo(
                 //   113 * 70,
                 //   duration: Duration(seconds: 2),
@@ -352,6 +358,48 @@ class _HomePage extends ConsumerState<HomePage>
     );
   }
 
+  // Widget lastRead() {
+  //   var surah = jsonDecode(LocalStorage().surah ?? '');
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text(
+  //         '${surah['nama_latin']}',
+  //         style: const TextStyle(
+  //           color: white,
+  //           fontSize: 18,
+  //           fontWeight: FontWeight.w600,
+  //         ),
+  //       ),
+  //       Row(
+  //         children: [
+  //           Text(
+  //             'Ayat No : ${LocalStorage().ayat}',
+  //             style: const TextStyle(
+  //               color: white,
+  //               fontSize: 14,
+  //               fontWeight: FontWeight.w400,
+  //             ),
+  //           ),
+  //           // snapshot.data!.playing
+  //           //     ? IconButton(
+  //           //         icon: Icon(
+  //           //           Icons.stop_circle_outlined,
+  //           //         ),
+  //           //         color: white,
+  //           //         onPressed: () => false,
+  //           //       )
+  //           //     : IconButton(
+  //           //         icon: Icon(Icons.play_arrow),
+  //           //         color: white,
+  //           //         onPressed: () => false,
+  //           //       )
+  //         ],
+  //       )
+  //     ],
+  //   );
+  // }
+
   Widget lastRead(List<Surah>? listSurah) {
     return switch (ref.watch(audioDataProvider)) {
       AsyncData(:final value) => StreamBuilder(
@@ -359,54 +407,81 @@ class _HomePage extends ConsumerState<HomePage>
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return StreamBuilder(
-                  stream: ref.read(audioDataProvider.notifier).stream(),
-                  builder: (context, play) {
-                    if (play.hasData) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            listSurah
-                                    ?.singleWhere((element) =>
-                                        element.nomor == value.keys.first)
-                                    .nama_latin ??
-                                '',
-                            style: const TextStyle(
-                              color: white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
+                stream: ref.read(audioDataProvider.notifier).stream(),
+                builder: (context, play) {
+                  if (play.hasData) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          listSurah
+                                  ?.singleWhere((element) =>
+                                      element.nomor == value.keys.first)
+                                  .nama_latin ??
+                              '',
+                          style: const TextStyle(
+                            color: white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                'Ayat No : ${(play.data ?? 0) + 1}',
-                                style: const TextStyle(
-                                  color: white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Ayat No : ${(play.data ?? 0) + 1}',
+                              style: const TextStyle(
+                                color: white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                               ),
-                              // snapshot.data!.playing
-                              //     ? IconButton(
-                              //         icon: Icon(
-                              //           Icons.stop_circle_outlined,
-                              //         ),
-                              //         color: white,
-                              //         onPressed: () => false,
-                              //       )
-                              //     : IconButton(
-                              //         icon: Icon(Icons.play_arrow),
-                              //         color: white,
-                              //         onPressed: () => false,
-                              //       )
-                            ],
-                          )
-                        ],
-                      );
-                    }
-                    return const SizedBox();
-                  });
+                            ),
+                            // snapshot.data!.playing
+                            //     ? IconButton(
+                            //         icon: Icon(
+                            //           Icons.stop_circle_outlined,
+                            //         ),
+                            //         color: white,
+                            //         onPressed: () => false,
+                            //       )
+                            //     : IconButton(
+                            //         icon: Icon(Icons.play_arrow),
+                            //         color: white,
+                            //         onPressed: () => false,
+                            //       )
+                          ],
+                        )
+                      ],
+                    );
+                  } else {
+                    var surah = jsonDecode(LocalStorage().surah ?? '');
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          surah['nama_latin'],
+                          style: const TextStyle(
+                            color: white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Ayat No : ${LocalStorage().ayat}',
+                              style: const TextStyle(
+                                color: white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                  }
+                },
+              );
             }
             return const SizedBox();
           },

@@ -19,7 +19,7 @@ class Surah with _$Surah {
       required String deskripsi,
       required String audio,
       @Default(false) bool status,
-      List<Ayat>? ayat}) = _Surah;
+      @Default([]) List<Ayat> ayat}) = _Surah;
 
   factory Surah.fromJson(Map<String, dynamic> json) => _$SurahFromJson(json);
 }

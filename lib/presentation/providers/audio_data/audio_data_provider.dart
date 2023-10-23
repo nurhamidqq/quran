@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:just_audio/just_audio.dart';
 import 'package:quran/domain/entities/ayat.dart';
+import 'package:quran/domain/entities/surah.dart';
+import 'package:quran/presentation/services/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'audio_data_provider.g.dart';
@@ -26,16 +30,14 @@ class AudioData extends _$AudioData {
   // }
 
   Future<void> play(
-      {required List<Ayat> listAyat,
-      required int index,
-      required int noSurah}) async {
+      {required Surah surah, required int index, required int noSurah}) async {
     state = const AsyncLoading();
-    var ayat = listAyat
-        .singleWhere((element) => element.id == listAyat.elementAt(index).id);
+    var ayat = surah.ayat
+        .singleWhere((element) => element.id == surah.ayat.elementAt(index).id);
     final playlist = ConcatenatingAudioSource(
       useLazyPreparation: true,
       shuffleOrder: DefaultShuffleOrder(),
-      children: listAyat
+      children: surah.ayat
           .map((e) => AudioSource.uri(Uri.parse(
               'https://cdn.islamic.network/quran/audio/128/ar.alafasy/${e.id}.mp3')))
           .toList(),
@@ -45,6 +47,7 @@ class AudioData extends _$AudioData {
     player.playerStateStream.listen((event) {
       if (event.playing) {
         state = AsyncData({noSurah: ayat.copyWith(isPlaying: true)});
+        LocalStorage().surah = jsonEncode(surah);
       }
 
       if (event.processingState == ProcessingState.completed) {

@@ -13,6 +13,7 @@ import 'package:quran/presentation/misc/extentions.dart';
 import 'package:quran/presentation/misc/methods.dart';
 import 'package:quran/presentation/providers/audio_data/audio_data_provider.dart';
 import 'package:quran/presentation/providers/surah_data/surah_data_provider.dart';
+import 'package:quran/presentation/services/shared_preferences.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 class SurahPage extends ConsumerStatefulWidget {
@@ -183,7 +184,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                           ListView.separated(
                             shrinkWrap: true,
                             physics: const ClampingScrollPhysics(),
-                            itemCount: surah?.ayat?.length ?? 0,
+                            itemCount: surah?.ayat.length ?? 0,
                             separatorBuilder: (context, index) => Column(
                               children: [
                                 verticalSpace(16),
@@ -191,7 +192,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                               ],
                             ),
                             itemBuilder: (context, index) {
-                              final ayat = surah?.ayat?[index];
+                              final ayat = surah?.ayat[index];
                               return AutoScrollTag(
                                 controller: _sccontroller,
                                 key: ValueKey(ayat?.nomor),
@@ -277,7 +278,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                         ),
                                       ),
                                     ),
-                                    if (surah?.ayat?.length == index + 1)
+                                    if (surah?.ayat.length == index + 1)
                                       if (snapshot.hasData &&
                                           snapshot.data!.playing)
                                         verticalSpace(100),
@@ -358,6 +359,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                 if (value.isNotEmpty &&
                     play.data == index &&
                     value.keys.first == surah?.nomor) {
+                  LocalStorage().ayat = ((play.data ?? 0) + 1).toString();
                   // final contentSize =
                   //     _sccontroller.position.viewportDimension +
                   //         _sccontroller.position.maxScrollExtent;
@@ -393,19 +395,18 @@ class _SurahPage extends ConsumerState<SurahPage> {
                 }
                 return InkWell(
                     onTap: () => ref.read(audioDataProvider.notifier).play(
-                          listAyat: surah?.ayat ?? [],
+                          surah: surah!,
                           index: index,
-                          noSurah: surah?.nomor ?? 0,
+                          noSurah: surah.nomor,
                         ),
                     child: SvgPicture.asset('assets/images/play-icon.svg'));
               }
               return SvgPicture.asset('assets/images/play-icon.svg');
             }
             return InkWell(
-              onTap: () => ref.read(audioDataProvider.notifier).play(
-                  listAyat: surah?.ayat ?? [],
-                  index: index,
-                  noSurah: surah?.nomor ?? 0),
+              onTap: () => ref
+                  .read(audioDataProvider.notifier)
+                  .play(surah: surah!, index: index, noSurah: surah.nomor),
               child: SvgPicture.asset('assets/images/play-icon.svg'),
             );
           },

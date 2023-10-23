@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran/presentation/misc/constants.dart';
 import 'package:quran/presentation/providers/router/router_provider.dart';
+import 'package:quran/presentation/services/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalStorage().init();
   runApp(const ProviderScope(
     child: MyApp(),
   ));

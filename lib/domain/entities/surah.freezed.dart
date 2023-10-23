@@ -32,7 +32,7 @@ mixin _$Surah {
   String get deskripsi => throw _privateConstructorUsedError;
   String get audio => throw _privateConstructorUsedError;
   bool get status => throw _privateConstructorUsedError;
-  List<Ayat>? get ayat => throw _privateConstructorUsedError;
+  List<Ayat> get ayat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,7 @@ abstract class $SurahCopyWith<$Res> {
       String deskripsi,
       String audio,
       bool status,
-      List<Ayat>? ayat});
+      List<Ayat> ayat});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$SurahCopyWithImpl<$Res, $Val extends Surah>
     Object? deskripsi = null,
     Object? audio = null,
     Object? status = null,
-    Object? ayat = freezed,
+    Object? ayat = null,
   }) {
     return _then(_value.copyWith(
       nomor: null == nomor
@@ -118,10 +118,10 @@ class _$SurahCopyWithImpl<$Res, $Val extends Surah>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      ayat: freezed == ayat
+      ayat: null == ayat
           ? _value.ayat
           : ayat // ignore: cast_nullable_to_non_nullable
-              as List<Ayat>?,
+              as List<Ayat>,
     ) as $Val);
   }
 }
@@ -143,7 +143,7 @@ abstract class _$$SurahImplCopyWith<$Res> implements $SurahCopyWith<$Res> {
       String deskripsi,
       String audio,
       bool status,
-      List<Ayat>? ayat});
+      List<Ayat> ayat});
 }
 
 /// @nodoc
@@ -166,7 +166,7 @@ class __$$SurahImplCopyWithImpl<$Res>
     Object? deskripsi = null,
     Object? audio = null,
     Object? status = null,
-    Object? ayat = freezed,
+    Object? ayat = null,
   }) {
     return _then(_$SurahImpl(
       nomor: null == nomor
@@ -205,10 +205,10 @@ class __$$SurahImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
-      ayat: freezed == ayat
+      ayat: null == ayat
           ? _value._ayat
           : ayat // ignore: cast_nullable_to_non_nullable
-              as List<Ayat>?,
+              as List<Ayat>,
     ));
   }
 }
@@ -226,7 +226,7 @@ class _$SurahImpl implements _Surah {
       required this.deskripsi,
       required this.audio,
       this.status = false,
-      final List<Ayat>? ayat})
+      final List<Ayat> ayat = const []})
       : _ayat = ayat;
 
   factory _$SurahImpl.fromJson(Map<String, dynamic> json) =>
@@ -254,14 +254,13 @@ class _$SurahImpl implements _Surah {
   @override
   @JsonKey()
   final bool status;
-  final List<Ayat>? _ayat;
+  final List<Ayat> _ayat;
   @override
-  List<Ayat>? get ayat {
-    final value = _ayat;
-    if (value == null) return null;
+  @JsonKey()
+  List<Ayat> get ayat {
     if (_ayat is EqualUnmodifiableListView) return _ayat;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_ayat);
   }
 
   @override
@@ -330,7 +329,7 @@ abstract class _Surah implements Surah {
       required final String deskripsi,
       required final String audio,
       final bool status,
-      final List<Ayat>? ayat}) = _$SurahImpl;
+      final List<Ayat> ayat}) = _$SurahImpl;
 
   factory _Surah.fromJson(Map<String, dynamic> json) = _$SurahImpl.fromJson;
 
@@ -353,7 +352,7 @@ abstract class _Surah implements Surah {
   @override
   bool get status;
   @override
-  List<Ayat>? get ayat;
+  List<Ayat> get ayat;
   @override
   @JsonKey(ignore: true)
   _$$SurahImplCopyWith<_$SurahImpl> get copyWith =>
