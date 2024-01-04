@@ -169,7 +169,7 @@ class _HomePage extends ConsumerState<HomePage>
                                     )
                                   ],
                                 ),
-                                lastRead(listSurah),
+                                //lastRead(listSurah),
                                 // Column(
                                 //   crossAxisAlignment: CrossAxisAlignment.start,
                                 //   children: [
@@ -273,7 +273,7 @@ class _HomePage extends ConsumerState<HomePage>
                   },
                   const Center(
                     child: Text(
-                      '2',
+                      'Isi Tab Para',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w600,
