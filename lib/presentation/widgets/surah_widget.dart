@@ -43,7 +43,7 @@ class SurahWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      surah.nama_latin,
+                      surah.namaLatin,
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -52,7 +52,7 @@ class SurahWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          surah.tempat_turun.toUpperCase(),
+                          surah.tempatTurun.toUpperCase(),
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
@@ -64,7 +64,7 @@ class SurahWidget extends StatelessWidget {
                             maxRadius: 4, backgroundColor: darkGrey),
                         horizontalSpace(5),
                         Text(
-                          '${surah.jumlah_ayat} Ayat',
+                          '${surah.jumlahAyat} Ayat',
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,

@@ -15,31 +15,16 @@ class AudioData extends _$AudioData {
   @override
   Future<Map<int, Ayat?>> build() async => {};
 
-  // Future<void> play({required List<Ayat> listAyat, required int id}) async {
-  //   state = const AsyncLoading();
-  //   var ayat = listAyat.singleWhere((element) => element.id == id);
-  //   final source = getSource(ayat);
-  //   if (player.playing) {
-  //     await stop();
-  //     state = AsyncData(ayat.copyWith(isPlaying: false));
-  //   }
-  //   state = AsyncData(ayat.copyWith(isPlaying: true));
-  //   await player.setAudioSource(source);
-  //   await player.play().whenComplete(() => stop());
-  //   state = AsyncData(ayat.copyWith(isPlaying: false));
-  // }
-
   Future<void> play(
       {required Surah surah, required int index, required int noSurah}) async {
     state = const AsyncLoading();
-    var ayat = surah.ayat
-        .singleWhere((element) => element.id == surah.ayat.elementAt(index).id);
+    var ayat = surah.ayat.singleWhere((element) =>
+        element.nomorAyat == surah.ayat.elementAt(index).nomorAyat);
     final playlist = ConcatenatingAudioSource(
       useLazyPreparation: true,
       shuffleOrder: DefaultShuffleOrder(),
       children: surah.ayat
-          .map((e) => AudioSource.uri(Uri.parse(
-              'https://cdn.islamic.network/quran/audio/128/ar.alafasy/${e.id}.mp3')))
+          .map((e) => AudioSource.uri(Uri.parse(e.audio.no5)))
           .toList(),
     );
     await player.setAudioSource(playlist, initialIndex: index);
@@ -75,9 +60,6 @@ class AudioData extends _$AudioData {
   void resume() {
     player.play().asStream();
   }
-
-  // LockCachingAudioSource getSource(Ayat ayat) {
-  //   return LockCachingAudioSource(Uri.parse(
-  //       'https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayat.id - 1}.mp3'));
-  // }
 }
+
+//'https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3

@@ -20,12 +20,13 @@ Ayat _$AyatFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Ayat {
-  int get id => throw _privateConstructorUsedError;
-  int get surah => throw _privateConstructorUsedError;
-  int get nomor => throw _privateConstructorUsedError;
-  String get ar => throw _privateConstructorUsedError;
-  String get tr => throw _privateConstructorUsedError;
-  String get idn => throw _privateConstructorUsedError;
+//required int? id,
+// required int surah,
+  int get nomorAyat => throw _privateConstructorUsedError;
+  String get teksArab => throw _privateConstructorUsedError;
+  String get teksLatin => throw _privateConstructorUsedError;
+  String get teksIndonesia => throw _privateConstructorUsedError;
+  Audio get audio => throw _privateConstructorUsedError;
   bool get isPlaying => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,13 +40,14 @@ abstract class $AyatCopyWith<$Res> {
       _$AyatCopyWithImpl<$Res, Ayat>;
   @useResult
   $Res call(
-      {int id,
-      int surah,
-      int nomor,
-      String ar,
-      String tr,
-      String idn,
+      {int nomorAyat,
+      String teksArab,
+      String teksLatin,
+      String teksIndonesia,
+      Audio audio,
       bool isPlaying});
+
+  $AudioCopyWith<$Res> get audio;
 }
 
 /// @nodoc
@@ -61,44 +63,47 @@ class _$AyatCopyWithImpl<$Res, $Val extends Ayat>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? surah = null,
-    Object? nomor = null,
-    Object? ar = null,
-    Object? tr = null,
-    Object? idn = null,
+    Object? nomorAyat = null,
+    Object? teksArab = null,
+    Object? teksLatin = null,
+    Object? teksIndonesia = null,
+    Object? audio = null,
     Object? isPlaying = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      nomorAyat: null == nomorAyat
+          ? _value.nomorAyat
+          : nomorAyat // ignore: cast_nullable_to_non_nullable
               as int,
-      surah: null == surah
-          ? _value.surah
-          : surah // ignore: cast_nullable_to_non_nullable
-              as int,
-      nomor: null == nomor
-          ? _value.nomor
-          : nomor // ignore: cast_nullable_to_non_nullable
-              as int,
-      ar: null == ar
-          ? _value.ar
-          : ar // ignore: cast_nullable_to_non_nullable
+      teksArab: null == teksArab
+          ? _value.teksArab
+          : teksArab // ignore: cast_nullable_to_non_nullable
               as String,
-      tr: null == tr
-          ? _value.tr
-          : tr // ignore: cast_nullable_to_non_nullable
+      teksLatin: null == teksLatin
+          ? _value.teksLatin
+          : teksLatin // ignore: cast_nullable_to_non_nullable
               as String,
-      idn: null == idn
-          ? _value.idn
-          : idn // ignore: cast_nullable_to_non_nullable
+      teksIndonesia: null == teksIndonesia
+          ? _value.teksIndonesia
+          : teksIndonesia // ignore: cast_nullable_to_non_nullable
               as String,
+      audio: null == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
+              as Audio,
       isPlaying: null == isPlaying
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AudioCopyWith<$Res> get audio {
+    return $AudioCopyWith<$Res>(_value.audio, (value) {
+      return _then(_value.copyWith(audio: value) as $Val);
+    });
   }
 }
 
@@ -110,13 +115,15 @@ abstract class _$$AyatImplCopyWith<$Res> implements $AyatCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      int surah,
-      int nomor,
-      String ar,
-      String tr,
-      String idn,
+      {int nomorAyat,
+      String teksArab,
+      String teksLatin,
+      String teksIndonesia,
+      Audio audio,
       bool isPlaying});
+
+  @override
+  $AudioCopyWith<$Res> get audio;
 }
 
 /// @nodoc
@@ -129,39 +136,34 @@ class __$$AyatImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? surah = null,
-    Object? nomor = null,
-    Object? ar = null,
-    Object? tr = null,
-    Object? idn = null,
+    Object? nomorAyat = null,
+    Object? teksArab = null,
+    Object? teksLatin = null,
+    Object? teksIndonesia = null,
+    Object? audio = null,
     Object? isPlaying = null,
   }) {
     return _then(_$AyatImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      nomorAyat: null == nomorAyat
+          ? _value.nomorAyat
+          : nomorAyat // ignore: cast_nullable_to_non_nullable
               as int,
-      surah: null == surah
-          ? _value.surah
-          : surah // ignore: cast_nullable_to_non_nullable
-              as int,
-      nomor: null == nomor
-          ? _value.nomor
-          : nomor // ignore: cast_nullable_to_non_nullable
-              as int,
-      ar: null == ar
-          ? _value.ar
-          : ar // ignore: cast_nullable_to_non_nullable
+      teksArab: null == teksArab
+          ? _value.teksArab
+          : teksArab // ignore: cast_nullable_to_non_nullable
               as String,
-      tr: null == tr
-          ? _value.tr
-          : tr // ignore: cast_nullable_to_non_nullable
+      teksLatin: null == teksLatin
+          ? _value.teksLatin
+          : teksLatin // ignore: cast_nullable_to_non_nullable
               as String,
-      idn: null == idn
-          ? _value.idn
-          : idn // ignore: cast_nullable_to_non_nullable
+      teksIndonesia: null == teksIndonesia
+          ? _value.teksIndonesia
+          : teksIndonesia // ignore: cast_nullable_to_non_nullable
               as String,
+      audio: null == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
+              as Audio,
       isPlaying: null == isPlaying
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
@@ -174,36 +176,35 @@ class __$$AyatImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AyatImpl implements _Ayat {
   _$AyatImpl(
-      {required this.id,
-      required this.surah,
-      required this.nomor,
-      required this.ar,
-      required this.tr,
-      required this.idn,
+      {required this.nomorAyat,
+      required this.teksArab,
+      required this.teksLatin,
+      required this.teksIndonesia,
+      required this.audio,
       this.isPlaying = false});
 
   factory _$AyatImpl.fromJson(Map<String, dynamic> json) =>
       _$$AyatImplFromJson(json);
 
+//required int? id,
+// required int surah,
   @override
-  final int id;
+  final int nomorAyat;
   @override
-  final int surah;
+  final String teksArab;
   @override
-  final int nomor;
+  final String teksLatin;
   @override
-  final String ar;
+  final String teksIndonesia;
   @override
-  final String tr;
-  @override
-  final String idn;
+  final Audio audio;
   @override
   @JsonKey()
   final bool isPlaying;
 
   @override
   String toString() {
-    return 'Ayat(id: $id, surah: $surah, nomor: $nomor, ar: $ar, tr: $tr, idn: $idn, isPlaying: $isPlaying)';
+    return 'Ayat(nomorAyat: $nomorAyat, teksArab: $teksArab, teksLatin: $teksLatin, teksIndonesia: $teksIndonesia, audio: $audio, isPlaying: $isPlaying)';
   }
 
   @override
@@ -211,20 +212,23 @@ class _$AyatImpl implements _Ayat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AyatImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.surah, surah) || other.surah == surah) &&
-            (identical(other.nomor, nomor) || other.nomor == nomor) &&
-            (identical(other.ar, ar) || other.ar == ar) &&
-            (identical(other.tr, tr) || other.tr == tr) &&
-            (identical(other.idn, idn) || other.idn == idn) &&
+            (identical(other.nomorAyat, nomorAyat) ||
+                other.nomorAyat == nomorAyat) &&
+            (identical(other.teksArab, teksArab) ||
+                other.teksArab == teksArab) &&
+            (identical(other.teksLatin, teksLatin) ||
+                other.teksLatin == teksLatin) &&
+            (identical(other.teksIndonesia, teksIndonesia) ||
+                other.teksIndonesia == teksIndonesia) &&
+            (identical(other.audio, audio) || other.audio == audio) &&
             (identical(other.isPlaying, isPlaying) ||
                 other.isPlaying == isPlaying));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, surah, nomor, ar, tr, idn, isPlaying);
+  int get hashCode => Object.hash(runtimeType, nomorAyat, teksArab, teksLatin,
+      teksIndonesia, audio, isPlaying);
 
   @JsonKey(ignore: true)
   @override
@@ -242,32 +246,261 @@ class _$AyatImpl implements _Ayat {
 
 abstract class _Ayat implements Ayat {
   factory _Ayat(
-      {required final int id,
-      required final int surah,
-      required final int nomor,
-      required final String ar,
-      required final String tr,
-      required final String idn,
+      {required final int nomorAyat,
+      required final String teksArab,
+      required final String teksLatin,
+      required final String teksIndonesia,
+      required final Audio audio,
       final bool isPlaying}) = _$AyatImpl;
 
   factory _Ayat.fromJson(Map<String, dynamic> json) = _$AyatImpl.fromJson;
 
+  @override //required int? id,
+// required int surah,
+  int get nomorAyat;
   @override
-  int get id;
+  String get teksArab;
   @override
-  int get surah;
+  String get teksLatin;
   @override
-  int get nomor;
+  String get teksIndonesia;
   @override
-  String get ar;
-  @override
-  String get tr;
-  @override
-  String get idn;
+  Audio get audio;
   @override
   bool get isPlaying;
   @override
   @JsonKey(ignore: true)
   _$$AyatImplCopyWith<_$AyatImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Audio _$AudioFromJson(Map<String, dynamic> json) {
+  return _Audio.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Audio {
+  @JsonKey(name: '01')
+  String get no1 => throw _privateConstructorUsedError;
+  @JsonKey(name: '02')
+  String get no2 => throw _privateConstructorUsedError;
+  @JsonKey(name: '03')
+  String get no3 => throw _privateConstructorUsedError;
+  @JsonKey(name: '04')
+  String get no4 => throw _privateConstructorUsedError;
+  @JsonKey(name: '05')
+  String get no5 => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AudioCopyWith<Audio> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AudioCopyWith<$Res> {
+  factory $AudioCopyWith(Audio value, $Res Function(Audio) then) =
+      _$AudioCopyWithImpl<$Res, Audio>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: '01') String no1,
+      @JsonKey(name: '02') String no2,
+      @JsonKey(name: '03') String no3,
+      @JsonKey(name: '04') String no4,
+      @JsonKey(name: '05') String no5});
+}
+
+/// @nodoc
+class _$AudioCopyWithImpl<$Res, $Val extends Audio>
+    implements $AudioCopyWith<$Res> {
+  _$AudioCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? no1 = null,
+    Object? no2 = null,
+    Object? no3 = null,
+    Object? no4 = null,
+    Object? no5 = null,
+  }) {
+    return _then(_value.copyWith(
+      no1: null == no1
+          ? _value.no1
+          : no1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no2: null == no2
+          ? _value.no2
+          : no2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no3: null == no3
+          ? _value.no3
+          : no3 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no4: null == no4
+          ? _value.no4
+          : no4 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no5: null == no5
+          ? _value.no5
+          : no5 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AudioImplCopyWith<$Res> implements $AudioCopyWith<$Res> {
+  factory _$$AudioImplCopyWith(
+          _$AudioImpl value, $Res Function(_$AudioImpl) then) =
+      __$$AudioImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: '01') String no1,
+      @JsonKey(name: '02') String no2,
+      @JsonKey(name: '03') String no3,
+      @JsonKey(name: '04') String no4,
+      @JsonKey(name: '05') String no5});
+}
+
+/// @nodoc
+class __$$AudioImplCopyWithImpl<$Res>
+    extends _$AudioCopyWithImpl<$Res, _$AudioImpl>
+    implements _$$AudioImplCopyWith<$Res> {
+  __$$AudioImplCopyWithImpl(
+      _$AudioImpl _value, $Res Function(_$AudioImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? no1 = null,
+    Object? no2 = null,
+    Object? no3 = null,
+    Object? no4 = null,
+    Object? no5 = null,
+  }) {
+    return _then(_$AudioImpl(
+      no1: null == no1
+          ? _value.no1
+          : no1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no2: null == no2
+          ? _value.no2
+          : no2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no3: null == no3
+          ? _value.no3
+          : no3 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no4: null == no4
+          ? _value.no4
+          : no4 // ignore: cast_nullable_to_non_nullable
+              as String,
+      no5: null == no5
+          ? _value.no5
+          : no5 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AudioImpl implements _Audio {
+  _$AudioImpl(
+      {@JsonKey(name: '01') required this.no1,
+      @JsonKey(name: '02') required this.no2,
+      @JsonKey(name: '03') required this.no3,
+      @JsonKey(name: '04') required this.no4,
+      @JsonKey(name: '05') required this.no5});
+
+  factory _$AudioImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AudioImplFromJson(json);
+
+  @override
+  @JsonKey(name: '01')
+  final String no1;
+  @override
+  @JsonKey(name: '02')
+  final String no2;
+  @override
+  @JsonKey(name: '03')
+  final String no3;
+  @override
+  @JsonKey(name: '04')
+  final String no4;
+  @override
+  @JsonKey(name: '05')
+  final String no5;
+
+  @override
+  String toString() {
+    return 'Audio(no1: $no1, no2: $no2, no3: $no3, no4: $no4, no5: $no5)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioImpl &&
+            (identical(other.no1, no1) || other.no1 == no1) &&
+            (identical(other.no2, no2) || other.no2 == no2) &&
+            (identical(other.no3, no3) || other.no3 == no3) &&
+            (identical(other.no4, no4) || other.no4 == no4) &&
+            (identical(other.no5, no5) || other.no5 == no5));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, no1, no2, no3, no4, no5);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioImplCopyWith<_$AudioImpl> get copyWith =>
+      __$$AudioImplCopyWithImpl<_$AudioImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Audio implements Audio {
+  factory _Audio(
+      {@JsonKey(name: '01') required final String no1,
+      @JsonKey(name: '02') required final String no2,
+      @JsonKey(name: '03') required final String no3,
+      @JsonKey(name: '04') required final String no4,
+      @JsonKey(name: '05') required final String no5}) = _$AudioImpl;
+
+  factory _Audio.fromJson(Map<String, dynamic> json) = _$AudioImpl.fromJson;
+
+  @override
+  @JsonKey(name: '01')
+  String get no1;
+  @override
+  @JsonKey(name: '02')
+  String get no2;
+  @override
+  @JsonKey(name: '03')
+  String get no3;
+  @override
+  @JsonKey(name: '04')
+  String get no4;
+  @override
+  @JsonKey(name: '05')
+  String get no5;
+  @override
+  @JsonKey(ignore: true)
+  _$$AudioImplCopyWith<_$AudioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

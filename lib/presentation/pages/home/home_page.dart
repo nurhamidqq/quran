@@ -125,83 +125,65 @@ class _HomePage extends ConsumerState<HomePage>
                       ),
                     ),
                     verticalSpace(24),
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: const LinearGradient(
-                              begin: Alignment(-1.0, 0.0),
-                              end: Alignment(1.0, 0.0),
-                              colors: [
-                                Color(0xFFFA98D7),
-                                Color(0xFF9055FF),
-                              ],
-                              transform: GradientRotation(math.pi / 2.5),
+                    Visibility(
+                      visible: listSurah != null,
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(
+                                begin: Alignment(-1.0, 0.0),
+                                end: Alignment(1.0, 0.0),
+                                colors: [
+                                  Color(0xFFFA98D7),
+                                  Color(0xFF9055FF),
+                                ],
+                                transform: GradientRotation(math.pi / 2.5),
+                              ),
                             ),
+                            height: 135,
+                            width: double.infinity,
                           ),
-                          height: 135,
-                          width: double.infinity,
-                        ),
-                        Positioned(
-                            top: 19,
-                            left: 20,
-                            bottom: 19,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/images/book-icon.svg',
-                                      width: 20,
-                                      height: 20,
-                                    ),
-                                    horizontalSpace(8),
-                                    const Text(
-                                      'Last Playing',
-                                      style: TextStyle(
-                                        color: white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
+                          Positioned(
+                              top: 19,
+                              left: 20,
+                              bottom: 19,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/images/book-icon.svg',
+                                        width: 20,
+                                        height: 20,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                //lastRead(listSurah),
-                                // Column(
-                                //   crossAxisAlignment: CrossAxisAlignment.start,
-                                //   children: [
-                                //     const Text(
-                                //       'Al-Fatihah',
-                                //       style: TextStyle(
-                                //         color: white,
-                                //         fontSize: 18,
-                                //         fontWeight: FontWeight.w600,
-                                //       ),
-                                //     ),
-                                //     verticalSpace(4),
-                                //     const Text(
-                                //       'Ayat No : 1',
-                                //       style: TextStyle(
-                                //         color: white,
-                                //         fontSize: 14,
-                                //         fontWeight: FontWeight.w400,
-                                //       ),
-                                //     ),
-                                //   ],
-                                // )
-                              ],
-                            )),
-                        Positioned(
-                          top: 34,
-                          right: -33,
-                          width: 206,
-                          height: 126,
-                          child: SvgPicture.asset('assets/images/quran.svg'),
-                        )
-                      ],
+                                      horizontalSpace(8),
+                                      const Text(
+                                        'Last Playing',
+                                        style: TextStyle(
+                                          color: white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  lastRead(listSurah),
+                                ],
+                              )),
+                          Positioned(
+                            top: 34,
+                            right: -33,
+                            width: 206,
+                            height: 126,
+                            child: SvgPicture.asset('assets/images/quran.svg'),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -326,79 +308,16 @@ class _HomePage extends ConsumerState<HomePage>
                     image: 'assets/images/bookmark-icon.svg'),
               ],
               onTap: (index) async {
-                String data = await DefaultAssetBundle.of(context)
-                    .loadString("assets/doa/doaharian.json");
-                final jsonResult = jsonDecode(data);
-                print(jsonResult);
-                // _controller.animateTo(
-                //   113 * 70,
-                //   duration: Duration(seconds: 2),
-                //   curve: Curves.fastOutSlowIn,
-                // );
-
-                // final contentSize = _controller.position.viewportDimension +
-                //     _controller.position.maxScrollExtent;
-                // final index = 100;
-                // final target = contentSize * index / 114;
-                // _controller.position.animateTo(
-                //   target,
-                //   duration: const Duration(seconds: 2),
-                //   curve: Curves.fastOutSlowIn,
-                // );
-
-                // selectedPage = index;
-                // pageController.jumpToPage(selectedPage);
-                // pageController.animateToPage(selectedPage,
-                //     duration: const Duration(milliseconds: 200),
-                //     curve: Curves.easeInOut);
+                // String data = await DefaultAssetBundle.of(context)
+                //     .loadString("assets/doa/doaharian.json");
+                // final jsonResult = jsonDecode(data);
+                // print(jsonResult);
               },
               selectedIndex: 0)
         ],
       ),
     );
   }
-
-  // Widget lastRead() {
-  //   var surah = jsonDecode(LocalStorage().surah ?? '');
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text(
-  //         '${surah['nama_latin']}',
-  //         style: const TextStyle(
-  //           color: white,
-  //           fontSize: 18,
-  //           fontWeight: FontWeight.w600,
-  //         ),
-  //       ),
-  //       Row(
-  //         children: [
-  //           Text(
-  //             'Ayat No : ${LocalStorage().ayat}',
-  //             style: const TextStyle(
-  //               color: white,
-  //               fontSize: 14,
-  //               fontWeight: FontWeight.w400,
-  //             ),
-  //           ),
-  //           // snapshot.data!.playing
-  //           //     ? IconButton(
-  //           //         icon: Icon(
-  //           //           Icons.stop_circle_outlined,
-  //           //         ),
-  //           //         color: white,
-  //           //         onPressed: () => false,
-  //           //       )
-  //           //     : IconButton(
-  //           //         icon: Icon(Icons.play_arrow),
-  //           //         color: white,
-  //           //         onPressed: () => false,
-  //           //       )
-  //         ],
-  //       )
-  //     ],
-  //   );
-  // }
 
   Widget lastRead(List<Surah>? listSurah) {
     return switch (ref.watch(audioDataProvider)) {
@@ -409,7 +328,7 @@ class _HomePage extends ConsumerState<HomePage>
               return StreamBuilder(
                 stream: ref.read(audioDataProvider.notifier).stream(),
                 builder: (context, play) {
-                  if (play.hasData) {
+                  if (play.hasData && play.data != null) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -417,7 +336,7 @@ class _HomePage extends ConsumerState<HomePage>
                           listSurah
                                   ?.singleWhere((element) =>
                                       element.nomor == value.keys.first)
-                                  .nama_latin ??
+                                  .namaLatin ??
                               '',
                           style: const TextStyle(
                             color: white,
@@ -435,50 +354,49 @@ class _HomePage extends ConsumerState<HomePage>
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            // snapshot.data!.playing
-                            //     ? IconButton(
-                            //         icon: Icon(
-                            //           Icons.stop_circle_outlined,
-                            //         ),
-                            //         color: white,
-                            //         onPressed: () => false,
-                            //       )
-                            //     : IconButton(
-                            //         icon: Icon(Icons.play_arrow),
-                            //         color: white,
-                            //         onPressed: () => false,
-                            //       )
+                            snapshot.data!.playing
+                                ? IconButton(
+                                    icon: const Icon(Icons.headphones),
+                                    color: white,
+                                    onPressed: () => false,
+                                  )
+                                : const SizedBox()
                           ],
                         )
                       ],
                     );
                   } else {
-                    var surah = jsonDecode(LocalStorage().surah ?? '');
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          surah['nama_latin'],
-                          style: const TextStyle(
-                            color: white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Ayat No : ${LocalStorage().ayat}',
-                              style: const TextStyle(
-                                color: white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
+                    var lsurah = LocalStorage().surah;
+                    if (lsurah != null) {
+                      var surah = Surah.fromJson(jsonDecode(lsurah));
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            surah.namaLatin,
+                            style: const TextStyle(
+                              color: white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
                             ),
-                          ],
-                        )
-                      ],
-                    );
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Ayat No : ${LocalStorage().ayat}',
+                                style: const TextStyle(
+                                  color: white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
                   }
                 },
               );

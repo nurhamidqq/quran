@@ -23,14 +23,14 @@ mixin _$Surah {
   int get nomor => throw _privateConstructorUsedError;
   String get nama =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
-  String get nama_latin =>
+  String get namaLatin =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
-  int get jumlah_ayat =>
+  int get jumlahAyat =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
-  String get tempat_turun => throw _privateConstructorUsedError;
+  String get tempatTurun => throw _privateConstructorUsedError;
   String get arti => throw _privateConstructorUsedError;
-  String get deskripsi => throw _privateConstructorUsedError;
-  String get audio => throw _privateConstructorUsedError;
+  String get deskripsi =>
+      throw _privateConstructorUsedError; // required String audio,
   bool get status => throw _privateConstructorUsedError;
   List<Ayat> get ayat => throw _privateConstructorUsedError;
 
@@ -47,12 +47,11 @@ abstract class $SurahCopyWith<$Res> {
   $Res call(
       {int nomor,
       String nama,
-      String nama_latin,
-      int jumlah_ayat,
-      String tempat_turun,
+      String namaLatin,
+      int jumlahAyat,
+      String tempatTurun,
       String arti,
       String deskripsi,
-      String audio,
       bool status,
       List<Ayat> ayat});
 }
@@ -72,12 +71,11 @@ class _$SurahCopyWithImpl<$Res, $Val extends Surah>
   $Res call({
     Object? nomor = null,
     Object? nama = null,
-    Object? nama_latin = null,
-    Object? jumlah_ayat = null,
-    Object? tempat_turun = null,
+    Object? namaLatin = null,
+    Object? jumlahAyat = null,
+    Object? tempatTurun = null,
     Object? arti = null,
     Object? deskripsi = null,
-    Object? audio = null,
     Object? status = null,
     Object? ayat = null,
   }) {
@@ -90,17 +88,17 @@ class _$SurahCopyWithImpl<$Res, $Val extends Surah>
           ? _value.nama
           : nama // ignore: cast_nullable_to_non_nullable
               as String,
-      nama_latin: null == nama_latin
-          ? _value.nama_latin
-          : nama_latin // ignore: cast_nullable_to_non_nullable
+      namaLatin: null == namaLatin
+          ? _value.namaLatin
+          : namaLatin // ignore: cast_nullable_to_non_nullable
               as String,
-      jumlah_ayat: null == jumlah_ayat
-          ? _value.jumlah_ayat
-          : jumlah_ayat // ignore: cast_nullable_to_non_nullable
+      jumlahAyat: null == jumlahAyat
+          ? _value.jumlahAyat
+          : jumlahAyat // ignore: cast_nullable_to_non_nullable
               as int,
-      tempat_turun: null == tempat_turun
-          ? _value.tempat_turun
-          : tempat_turun // ignore: cast_nullable_to_non_nullable
+      tempatTurun: null == tempatTurun
+          ? _value.tempatTurun
+          : tempatTurun // ignore: cast_nullable_to_non_nullable
               as String,
       arti: null == arti
           ? _value.arti
@@ -109,10 +107,6 @@ class _$SurahCopyWithImpl<$Res, $Val extends Surah>
       deskripsi: null == deskripsi
           ? _value.deskripsi
           : deskripsi // ignore: cast_nullable_to_non_nullable
-              as String,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -136,12 +130,11 @@ abstract class _$$SurahImplCopyWith<$Res> implements $SurahCopyWith<$Res> {
   $Res call(
       {int nomor,
       String nama,
-      String nama_latin,
-      int jumlah_ayat,
-      String tempat_turun,
+      String namaLatin,
+      int jumlahAyat,
+      String tempatTurun,
       String arti,
       String deskripsi,
-      String audio,
       bool status,
       List<Ayat> ayat});
 }
@@ -159,12 +152,11 @@ class __$$SurahImplCopyWithImpl<$Res>
   $Res call({
     Object? nomor = null,
     Object? nama = null,
-    Object? nama_latin = null,
-    Object? jumlah_ayat = null,
-    Object? tempat_turun = null,
+    Object? namaLatin = null,
+    Object? jumlahAyat = null,
+    Object? tempatTurun = null,
     Object? arti = null,
     Object? deskripsi = null,
-    Object? audio = null,
     Object? status = null,
     Object? ayat = null,
   }) {
@@ -177,17 +169,17 @@ class __$$SurahImplCopyWithImpl<$Res>
           ? _value.nama
           : nama // ignore: cast_nullable_to_non_nullable
               as String,
-      nama_latin: null == nama_latin
-          ? _value.nama_latin
-          : nama_latin // ignore: cast_nullable_to_non_nullable
+      namaLatin: null == namaLatin
+          ? _value.namaLatin
+          : namaLatin // ignore: cast_nullable_to_non_nullable
               as String,
-      jumlah_ayat: null == jumlah_ayat
-          ? _value.jumlah_ayat
-          : jumlah_ayat // ignore: cast_nullable_to_non_nullable
+      jumlahAyat: null == jumlahAyat
+          ? _value.jumlahAyat
+          : jumlahAyat // ignore: cast_nullable_to_non_nullable
               as int,
-      tempat_turun: null == tempat_turun
-          ? _value.tempat_turun
-          : tempat_turun // ignore: cast_nullable_to_non_nullable
+      tempatTurun: null == tempatTurun
+          ? _value.tempatTurun
+          : tempatTurun // ignore: cast_nullable_to_non_nullable
               as String,
       arti: null == arti
           ? _value.arti
@@ -196,10 +188,6 @@ class __$$SurahImplCopyWithImpl<$Res>
       deskripsi: null == deskripsi
           ? _value.deskripsi
           : deskripsi // ignore: cast_nullable_to_non_nullable
-              as String,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -219,12 +207,11 @@ class _$SurahImpl implements _Surah {
   _$SurahImpl(
       {required this.nomor,
       required this.nama,
-      required this.nama_latin,
-      required this.jumlah_ayat,
-      required this.tempat_turun,
+      required this.namaLatin,
+      required this.jumlahAyat,
+      required this.tempatTurun,
       required this.arti,
       required this.deskripsi,
-      required this.audio,
       this.status = false,
       final List<Ayat> ayat = const []})
       : _ayat = ayat;
@@ -238,19 +225,18 @@ class _$SurahImpl implements _Surah {
   final String nama;
 // ignore: non_constant_identifier_names
   @override
-  final String nama_latin;
+  final String namaLatin;
 // ignore: non_constant_identifier_names
   @override
-  final int jumlah_ayat;
+  final int jumlahAyat;
 // ignore: non_constant_identifier_names
   @override
-  final String tempat_turun;
+  final String tempatTurun;
   @override
   final String arti;
   @override
   final String deskripsi;
-  @override
-  final String audio;
+// required String audio,
   @override
   @JsonKey()
   final bool status;
@@ -265,7 +251,7 @@ class _$SurahImpl implements _Surah {
 
   @override
   String toString() {
-    return 'Surah(nomor: $nomor, nama: $nama, nama_latin: $nama_latin, jumlah_ayat: $jumlah_ayat, tempat_turun: $tempat_turun, arti: $arti, deskripsi: $deskripsi, audio: $audio, status: $status, ayat: $ayat)';
+    return 'Surah(nomor: $nomor, nama: $nama, namaLatin: $namaLatin, jumlahAyat: $jumlahAyat, tempatTurun: $tempatTurun, arti: $arti, deskripsi: $deskripsi, status: $status, ayat: $ayat)';
   }
 
   @override
@@ -275,16 +261,15 @@ class _$SurahImpl implements _Surah {
             other is _$SurahImpl &&
             (identical(other.nomor, nomor) || other.nomor == nomor) &&
             (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.nama_latin, nama_latin) ||
-                other.nama_latin == nama_latin) &&
-            (identical(other.jumlah_ayat, jumlah_ayat) ||
-                other.jumlah_ayat == jumlah_ayat) &&
-            (identical(other.tempat_turun, tempat_turun) ||
-                other.tempat_turun == tempat_turun) &&
+            (identical(other.namaLatin, namaLatin) ||
+                other.namaLatin == namaLatin) &&
+            (identical(other.jumlahAyat, jumlahAyat) ||
+                other.jumlahAyat == jumlahAyat) &&
+            (identical(other.tempatTurun, tempatTurun) ||
+                other.tempatTurun == tempatTurun) &&
             (identical(other.arti, arti) || other.arti == arti) &&
             (identical(other.deskripsi, deskripsi) ||
                 other.deskripsi == deskripsi) &&
-            (identical(other.audio, audio) || other.audio == audio) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._ayat, _ayat));
   }
@@ -295,12 +280,11 @@ class _$SurahImpl implements _Surah {
       runtimeType,
       nomor,
       nama,
-      nama_latin,
-      jumlah_ayat,
-      tempat_turun,
+      namaLatin,
+      jumlahAyat,
+      tempatTurun,
       arti,
       deskripsi,
-      audio,
       status,
       const DeepCollectionEquality().hash(_ayat));
 
@@ -322,12 +306,11 @@ abstract class _Surah implements Surah {
   factory _Surah(
       {required final int nomor,
       required final String nama,
-      required final String nama_latin,
-      required final int jumlah_ayat,
-      required final String tempat_turun,
+      required final String namaLatin,
+      required final int jumlahAyat,
+      required final String tempatTurun,
       required final String arti,
       required final String deskripsi,
-      required final String audio,
       final bool status,
       final List<Ayat> ayat}) = _$SurahImpl;
 
@@ -338,18 +321,16 @@ abstract class _Surah implements Surah {
   @override
   String get nama;
   @override // ignore: non_constant_identifier_names
-  String get nama_latin;
+  String get namaLatin;
   @override // ignore: non_constant_identifier_names
-  int get jumlah_ayat;
+  int get jumlahAyat;
   @override // ignore: non_constant_identifier_names
-  String get tempat_turun;
+  String get tempatTurun;
   @override
   String get arti;
   @override
   String get deskripsi;
-  @override
-  String get audio;
-  @override
+  @override // required String audio,
   bool get status;
   @override
   List<Ayat> get ayat;

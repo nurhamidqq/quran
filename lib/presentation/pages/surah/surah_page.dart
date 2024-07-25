@@ -63,7 +63,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                   ),
                   horizontalSpace(24),
                   Text(
-                    widget.surah.nama_latin,
+                    widget.surah.namaLatin,
                     style: const TextStyle(
                       fontSize: 20,
                       color: hard,
@@ -112,7 +112,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      surah?.nama_latin ?? '',
+                                      surah?.namaLatin ?? '',
                                       style: const TextStyle(
                                         fontSize: 26,
                                         fontWeight: FontWeight.w500,
@@ -142,7 +142,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          (surah?.tempat_turun ?? '')
+                                          (surah?.tempatTurun ?? '')
                                               .toUpperCase(),
                                           style: const TextStyle(
                                             fontSize: 14,
@@ -156,7 +156,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                             backgroundColor: darkGrey),
                                         horizontalSpace(5),
                                         Text(
-                                          '${surah?.jumlah_ayat} AYAT',
+                                          '${surah?.jumlahAyat} AYAT',
                                           style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500,
@@ -195,7 +195,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                               final ayat = surah?.ayat[index];
                               return AutoScrollTag(
                                 controller: _sccontroller,
-                                key: ValueKey(ayat?.nomor),
+                                key: ValueKey(ayat?.nomorAyat),
                                 index: index,
                                 child: Column(
                                   children: [
@@ -217,7 +217,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                               child: CircleAvatar(
                                                 backgroundColor: hard,
                                                 child: Text(
-                                                  "${ayat?.nomor}",
+                                                  "${ayat?.nomorAyat}",
                                                   style: const TextStyle(
                                                     color: white,
                                                     fontWeight: FontWeight.w500,
@@ -243,8 +243,9 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                     Align(
                                       alignment: Alignment.centerRight,
                                       child: Text(
-                                        ayat?.ar ?? '',
+                                        ayat?.teksArab ?? '',
                                         textDirection: TextDirection.rtl,
+                                        // ignore: deprecated_member_use
                                         textScaleFactor: 1.8,
                                         style: const TextStyle(
                                           fontSize: 18,
@@ -258,7 +259,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        (ayat?.tr ?? '').toCapitalized(),
+                                        (ayat?.teksLatin ?? '').toCapitalized(),
                                         style: const TextStyle(
                                           fontSize: 18,
                                           color: black,
@@ -271,7 +272,7 @@ class _SurahPage extends ConsumerState<SurahPage> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        ayat?.idn ?? '',
+                                        ayat?.teksIndonesia ?? '',
                                         style: const TextStyle(
                                           color: black,
                                           fontWeight: FontWeight.w400,
